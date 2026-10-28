@@ -78,7 +78,7 @@ certains éléments ne sont pas vraiment des outils (Nuclear physics, Branding).
 -->
 ### Reflection 5: The human check on `extracted.json`
 
-I did the critique pass myself (no classmate) on posting 15. I compared the model's
+I did the critique pass myself on posting 15. I compared the model's
 output with the source text and found a real error: with the first setting
 (`MAX_CHARS = 1500`) the model only saw the company presentation and returned an
 empty list, while the real skills (RTL, SerDes, LVDS...) were in the part that was
@@ -97,7 +97,7 @@ list or a hallucinated skill is hidden inside a percentage and cannot be traced 
 FR :
 Réflexion 5 : la vérification humaine sur extracted.json
 
-J'ai fait la passe de critique moi-même (pas de camarade) sur l'offre 15. J'ai
+J'ai fait la passe de critique moi-même  sur l'offre 15. J'ai
 comparé la sortie du modèle avec le texte d'origine et j'ai trouvé une vraie erreur :
 avec le premier réglage (MAX_CHARS = 1500), le modèle ne voyait que la présentation
 de l'entreprise et renvoyait une liste vide, alors que les vraies compétences (RTL,
@@ -142,4 +142,43 @@ le résultat (en enseigner plus, ou non).
 Note honnête : j'avais déjà vu dans mes résultats d'extraction que Python apparaît
 dans beaucoup de mes offres, donc je n'ai pas choisi ma compétence complètement à
 l'aveugle. J'ai choisi Docker pour la décision qu'il permet, pas à cause d'un chiffre.
+-->
+### Reflection 6 (part 2): Which number would I trust?
+
+With the default skill, `python`, the KPI is 60% (9 postings out of 15). With my
+own choice, `docker`, it is 13.3% (2 postings out of 15). Only the tracked skill
+changed, so the KPI really depends on what I chose to measure .
+
+I would not use either number alone to tell the committee "students should learn
+X". The Python number is more stable (it rests on 9 postings), but it does not help
+the committee decide, because Python is probably already taught. The Docker number
+is the useful one for a decision, but it rests on only 2 postings: one posting more
+or less changes it by about 7 points.
+
+There are other problems: my 15 postings are simply the first lines of the file,
+not a random sample, one posting is counted twice, and the model can miss a skill
+that is only mentioned briefly. To support a real decision I would need many more
+postings, picked at random, without duplicates, and a human check of a part of
+the extracted skills.
+
+<!--
+FR :
+Réflexion 6 (partie 2) : à quel chiffre faire confiance ?
+
+Avec la compétence par défaut, python, le KPI est de 60 % (9 offres sur 15). Avec
+mon propre choix, docker, il est de 13,3 % (2 offres sur 15). Seule la compétence
+suivie a changé, donc le KPI dépend vraiment de ce que j'ai choisi de mesurer .
+
+Je n'utiliserais aucun des deux chiffres seul pour dire au comité « les étudiants
+devraient apprendre X ». Le chiffre de Python est plus stable (il repose sur 9
+offres), mais il n'aide pas le comité à décider, car Python est probablement déjà
+enseigné. Le chiffre de Docker est celui qui est utile pour une décision, mais il
+repose sur seulement 2 offres : une offre de plus ou de moins le change d'environ 7
+points.
+
+Il y a d'autres problèmes : mes 15 offres sont simplement les premières lignes du
+fichier, pas un échantillon aléatoire, une offre est comptée deux fois, et le modèle
+peut manquer une compétence mentionnée seulement brièvement. Pour appuyer une vraie
+décision, il me faudrait beaucoup plus d'offres, tirées au hasard, sans doublons,
+et une vérification humaine d'une partie des compétences extraites.
 -->
