@@ -1,3 +1,5 @@
+
+
 ## Stage 1 – Acquisition
 
 ### Reflection 1: Why is a silent `robots.txt` failure worse than a visible crash?
@@ -11,7 +13,7 @@ before acting. If it fails without a warning, it has failed its only job, and
 nobody can tell. Later, a reader of the report or the dashboard will believe the
 data was collected within the site's rules, but we cannot be sure.
 
-This breaks provenance : we can no longer say where the data comes from or
+This breaks provenance: we can no longer say where the data comes from or
 how it was obtained. That is why my script uses `raise_for_status()` and
 `raise SystemExit(...)`: when something goes wrong, it must stop loudly.
 
