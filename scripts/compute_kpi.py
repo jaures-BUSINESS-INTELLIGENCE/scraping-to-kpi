@@ -2,7 +2,7 @@ import json, os, time
 from collections import Counter
 
 # Le KPI est une CONSTRUCTION : on choisit la compétence qu'on mesure.
-TARGET_SKILL = "python"
+TARGET_SKILL = "docker"
 
 def load_extracted(path="data/extracted.json"):
     # On lit le fichier produit par extract_skills.py
