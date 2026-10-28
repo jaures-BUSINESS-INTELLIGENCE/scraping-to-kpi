@@ -114,3 +114,32 @@ kpi.json tout est déjà agrégé en comptages : une erreur comme une liste vide
 compétence inventée est cachée dans un pourcentage et on ne peut plus remonter à
 la source.
 -->
+## Stage 4 – KPI definition
+
+### Reflection 6 (part 1): The skill I would track first
+
+If I built this dashboard for the ENSIM curriculum committee, I would track
+**Docker** first. Python is probably already taught everywhere, so a KPI on Python
+would not help the committee decide anything. Docker appears in DevOps and data
+engineering jobs, and it is a skill students can learn in a short module, so the
+committee can act on the result: teach more of it, or not.
+
+Honest note: I had already seen in my extraction results that Python appears in many
+of my postings, so I did not choose my skill completely blind. I chose Docker
+because of the decision it supports, not because of a number.
+
+<!--
+FR :
+Réflexion 6 (partie 1) : la compétence que je suivrais en premier
+
+Si je construisais ce tableau de bord pour le comité pédagogique de l'ENSIM, je
+suivrais **Docker** en premier. Python est probablement déjà enseigné partout, donc
+un KPI sur Python n'aiderait pas le comité à décider quoi que ce soit. Docker
+apparaît dans les métiers DevOps et data engineering, et c'est une compétence que
+les étudiants peuvent apprendre dans un court module : le comité peut donc agir sur
+le résultat (en enseigner plus, ou non).
+
+Note honnête : j'avais déjà vu dans mes résultats d'extraction que Python apparaît
+dans beaucoup de mes offres, donc je n'ai pas choisi ma compétence complètement à
+l'aveugle. J'ai choisi Docker pour la décision qu'il permet, pas à cause d'un chiffre.
+-->
