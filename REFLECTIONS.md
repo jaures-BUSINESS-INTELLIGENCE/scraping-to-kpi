@@ -76,3 +76,41 @@ problèmes : 5 offres sur 15 ont une liste vide (peut-être parce que le script 
 que les 1 500 premiers caractères), deux offres semblent être des doublons, et
 certains éléments ne sont pas vraiment des outils (Nuclear physics, Branding).
 -->
+### Reflection 5: The human check on `extracted.json`
+
+I did the critique pass myself (no classmate) on posting 15. I compared the model's
+output with the source text and found a real error: with the first setting
+(`MAX_CHARS = 1500`) the model only saw the company presentation and returned an
+empty list, while the real skills (RTL, SerDes, LVDS...) were in the part that was
+cut. After I raised the limit to 5000, the list was correct.
+
+This is human-in-the-loop because a person reads the model's raw output next to the
+original text and decides if it is right. The model cannot check itself: it does not
+know what it did not see.
+
+It has to be done on `extracted.json` and not on `kpi.json` because `extracted.json`
+keeps the detail of each posting, so I can compare each list with its source. In
+`kpi.json` everything is already averaged into counts, so an error like an empty
+list or a hallucinated skill is hidden inside a percentage and cannot be traced back.
+
+<!--
+FR :
+Réflexion 5 : la vérification humaine sur extracted.json
+
+J'ai fait la passe de critique moi-même (pas de camarade) sur l'offre 15. J'ai
+comparé la sortie du modèle avec le texte d'origine et j'ai trouvé une vraie erreur :
+avec le premier réglage (MAX_CHARS = 1500), le modèle ne voyait que la présentation
+de l'entreprise et renvoyait une liste vide, alors que les vraies compétences (RTL,
+SerDes, LVDS...) étaient dans la partie coupée. Après avoir monté la limite à 5000,
+la liste était correcte.
+
+C'est du human-in-the-loop car une personne lit la sortie brute du modèle à côté du
+texte d'origine et décide si elle est juste. Le modèle ne peut pas se vérifier
+lui-même : il ne sait pas ce qu'il n'a pas vu.
+
+Cela doit se faire sur extracted.json et non sur kpi.json car extracted.json garde
+le détail de chaque offre, donc je peux comparer chaque liste à sa source. Dans
+kpi.json tout est déjà agrégé en comptages : une erreur comme une liste vide ou une
+compétence inventée est cachée dans un pourcentage et on ne peut plus remonter à
+la source.
+-->
