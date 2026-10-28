@@ -8,8 +8,7 @@ OLLAMA_URL = "http://127.0.0.1:11434/api/generate"   # l'adresse de l'IA locale
 MODEL = "qwen3:8b"
 # Nombre d'offres à traiter : on le donne en argument 
 N_POSTINGS = int(sys.argv[1]) if len(sys.argv) > 1 else 15
-MAX_CHARS = 1500  # on ne garde que le début de chaque offre, pour aller plus vite
-
+MAX_CHARS = 5000  # on lit jusqu'à 5000 caractères 
 # La consigne donnée à l'IA : extraire seulement les outils/techno concrets
 PROMPT_TEMPLATE = """Extract ONLY the concrete named tools/technologies/hard skills mentioned
 in this job posting text (it may be in French or English). Do not include generic soft
