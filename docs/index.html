@@ -7,8 +7,8 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
 <style>
   body { font-family: system-ui, sans-serif; max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
-  #kpi-card { padding: 1rem; border: 2px solid #0d7c9e; border-radius: 8px; }
-  #kpi-card .value { font-size: 2rem; font-weight: bold; color: #0d7c9e; }
+  #kpi-card { padding: 1rem; border: 2px solid #e07a1f; border-radius: 8px; }
+  #kpi-card .value { font-size: 2rem; font-weight: bold; color: #e07a1f; }
   #kpi-card .label { font-size: 0.9rem; color: #666; }
   canvas { margin-top: 1.5rem; }
   #howto { background: #f3f7f9; padding: 0.75rem 1rem; border-radius: 6px; font-size: 0.9rem; color: #333; }
@@ -27,6 +27,9 @@
 // Texte du graphique plus grand, pour qu'il soit lisible
 Chart.defaults.font.size = 14;
 
+const BLUE = '#0d7c9e';    // les compétences du classement
+const ORANGE = '#e07a1f';  // la compétence mesurée par le KPI
+
 fetch('data/kpi.json')
   .then(r => r.json())
   .then(data => {
@@ -43,17 +46,34 @@ fetch('data/kpi.json')
     `;
 
     const top = data.top_skills || [];
+    const target = data.target_skill;           // la compétence mesurée par le KPI
+    const labels = top.map(s => s.skill);
+    const counts = top.map(s => s.count);
+    const colors = top.map(() => BLUE);
+
+    if (target) {
+      // La compétence du KPI est-elle déjà dans le top 10 ?
+      const idx = top.findIndex(s => s.skill.toLowerCase() === target.toLowerCase());
+      if (idx >= 0) {
+        colors[idx] = ORANGE;                    // oui : on colore sa barre
+      } else {
+        labels.push(`${target} (KPI skill)`);    // non : on ajoute une barre à la fin
+        counts.push(data.n_matching);
+        colors.push(ORANGE);
+      }
+    }
+
     new Chart(document.getElementById('skillsChart'), {
       type: 'bar',
       data: {
-        labels: top.map(s => s.skill),
-        datasets: [{ label: 'Postings mentioning this skill', data: top.map(s => s.count), backgroundColor: '#0d7c9e' }],
+        labels: labels,
+        datasets: [{ label: 'Postings mentioning this skill', data: counts, backgroundColor: colors }],
       },
       options: {
         indexAxis: 'y',
         plugins: {
           legend: { display: false },
-          title: { display: true, text: 'Top 10 skills, by number of postings that mention them' },
+          title: { display: true, text: 'Skills, by number of postings that mention them' },
         },
         scales: {
           x: {
@@ -69,8 +89,8 @@ fetch('data/kpi.json')
     // Une phrase pour expliquer comment lire le graphique
     document.getElementById('howto').textContent =
       `How to read this chart: each bar is the number of postings, out of ${n}, that mention the skill. ` +
-      `Skills with the same count appear in no particular order, and only the top 10 are shown, ` +
-      `so the skill measured by the KPI above may not appear here.`;
+      (target ? `The orange bar is the skill measured by the KPI above (${target}). ` : '') +
+      `The blue bars are the 10 most frequent skills; skills with the same count appear in no particular order.`;
 
     document.getElementById('updated').textContent = `Data last computed ${data.generated_at || '(see script output)'}`;
   })
