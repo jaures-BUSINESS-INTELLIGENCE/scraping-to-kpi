@@ -40,6 +40,7 @@ def compute_kpi(postings, target_skill=TARGET_SKILL):
     return {
         "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "kpi_label": f"% of postings mentioning '{target_skill}'",
+        "target_skill": target_skill,
         "kpi_value": round(len(matching) / n, 3) if n else 0.0,
         "n_postings_analyzed": n,
         "n_matching": len(matching),
