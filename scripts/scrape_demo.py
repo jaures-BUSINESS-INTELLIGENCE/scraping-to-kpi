@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 
 URL = "https://fr.wikipedia.org/wiki/Le_Mans"
 # Le "User-Agent" dit au site qui nous sommes 
-USER_AGENT = "ENSIM-BI-course-TD (educational, contact talomjaures@icloud.com)"
+USER_AGENT = "ENSIM-BI-course-TD (educational)"
 
 def robots_allows(url, user_agent="*"):
     # Vérifie dans robots.txt si on a le droit de lire cette page.
