@@ -263,3 +263,47 @@ cette phrase : elle dit à qui s'adresse la page, ce que mesure le chiffre, et q
 s'agit d'un petit échantillon non aléatoire qui montre une tendance, pas une
 conclusion définitive.
 -->
+## On my own – a second KPI
+
+### Reflection 9: Comparing my two KPIs
+
+My first KPI is "% of postings mentioning docker" (13.3%, 2 postings out of 15).
+My second KPI is "% of postings mentioning any cloud provider or service" (AWS,
+Azure, GCP, Google Cloud, or the word cloud). It is also 13.3% (2 out of 15), but it
+is not the same two postings: only the DevOps posting is in both. The second one is
+a desktop support job that mentions Azure, which shows that the same number can hide
+different realities.
+
+I would trust the cloud KPI a bit more for a real decision. It measures a whole
+family of skills, so it answers a question the committee can act on ("is cloud an
+expected skill?") and it is less sensitive to how the model spells one tool. But its
+definition also contains choices: the rule counts any skill that contains the word
+"cloud" (like CloudWatch) and counts Azure even in a support job.
+
+In the end, I would not use either number alone to decide: both rest on only 2
+postings out of 15, in a sample that is not random. A real decision needs many more
+postings, without duplicates, and a human check of the extracted skills.
+
+<!--
+FR :
+Réflexion 9 : comparaison de mes deux KPI
+
+Mon premier KPI est « % d'offres mentionnant docker » (13,3 %, 2 offres sur 15). Mon
+second KPI est « % d'offres mentionnant un fournisseur ou service cloud » (AWS,
+Azure, GCP, Google Cloud, ou le mot cloud). Il vaut aussi 13,3 % (2 sur 15), mais ce
+ne sont pas les mêmes deux offres : seule l'offre DevOps est dans les deux. L'autre
+est un poste de support informatique qui mentionne Azure, ce qui montre qu'un même
+chiffre peut cacher des réalités différentes.
+
+Je ferais un peu plus confiance au KPI cloud pour une vraie décision. Il mesure toute
+une famille de compétences, donc il répond à une question sur laquelle le comité peut
+agir (« le cloud est-il une compétence attendue ? ») et il dépend moins de la façon
+dont le modèle écrit un outil. Mais sa définition contient aussi des choix : la
+règle compte toute compétence qui contient le mot « cloud » (comme CloudWatch) et
+compte Azure même dans un poste de support.
+
+Au final, je n'utiliserais aucun des deux chiffres seul pour décider : les deux
+reposent sur seulement 2 offres sur 15, dans un échantillon non aléatoire. Une vraie
+décision demande beaucoup plus d'offres, sans doublons, et une vérification humaine
+des compétences extraites.
+-->
