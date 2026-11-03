@@ -182,3 +182,51 @@ peut manquer une compétence mentionnée seulement brièvement. Pour appuyer une
 décision, il me faudrait beaucoup plus d'offres, tirées au hasard, sans doublons,
 et une vérification humaine d'une partie des compétences extraites.
 -->
+## Stage 5 – Storage and what is safe to publish
+
+### Reflection 7: Can someone rebuild my postings from `kpi.json`?
+
+No, a classmate could not find which postings I used, or which company they come
+from. `kpi.json` only contains totals: the KPI value, the number of postings
+analyzed, the number of matching postings, the average number of skills, and a
+top-10 list of skill names with their counts. It has no job titles, no company
+names, no links, no descriptions and no emails.
+
+To guarantee this, I had to leave out of the KPI every field that identifies a
+posting: `title`, `company` and the text itself. This was a deliberate design
+choice and not luck: `compute_kpi()` builds a new dictionary with only totals, and it
+only reads the skills lists, so it never copies a title or a company. Also, the
+`.gitignore` keeps `jobs_sample.csv` and `extracted.json` (which has titles and
+companies) on my computer only. I have to be honest that this design came with the
+TD, but I now understand why each choice matters.
+
+One small risk remains: with only 15 postings, a rare skill with a count of 2 (for
+example `Diffusion architectures`) could point to one specific job ad. With more
+postings, or by showing only skills that appear in several postings, this risk
+would be lower.
+
+<!--
+FR :
+Réflexion 7 : peut-on reconstituer mes offres à partir de kpi.json ?
+
+Non, un camarade ne pourrait pas retrouver quelles offres j'ai utilisées, ni de
+quelle entreprise elles viennent. kpi.json ne contient que des totaux : la valeur du
+KPI, le nombre d'offres analysées, le nombre d'offres qui correspondent, la moyenne
+de compétences, et un top 10 de noms de compétences avec leurs comptes. Il n'y a
+aucun titre d'offre, aucun nom d'entreprise, aucun lien, aucune description et aucun
+email.
+
+Pour le garantir, j'ai dû laisser de côté dans le KPI tous les champs qui identifient
+une offre : title, company et le texte lui-même. C'était un choix de conception
+volontaire et pas de la chance : compute_kpi() construit un nouveau dictionnaire avec
+seulement des totaux, et il ne lit que les listes de compétences, donc il ne copie
+jamais un titre ou une entreprise. De plus, le .gitignore garde jobs_sample.csv et
+extracted.json (qui contient titres et entreprises) uniquement sur mon ordinateur.
+Je dois être honnête : cette conception venait du TD, mais je comprends maintenant
+pourquoi chaque choix compte.
+
+Un petit risque demeure : avec seulement 15 offres, une compétence rare avec un
+compte de 2 (par exemple Diffusion architectures) pourrait désigner une annonce
+précise. Avec plus d'offres, ou en n'affichant que les compétences présentes dans
+plusieurs offres, ce risque serait plus faible.
+-->
