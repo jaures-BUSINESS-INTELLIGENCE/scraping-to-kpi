@@ -2,45 +2,46 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Scraping to KPI lab</title>
-<!-- Chart.js : la bibliothèque qui dessine le graphique -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What skills do job postings ask for?</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
 <style>
-  /* L'apparence de la page */
   body { font-family: system-ui, sans-serif; max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
   #kpi-card { padding: 1rem; border: 2px solid #0d7c9e; border-radius: 8px; }
   #kpi-card .value { font-size: 2rem; font-weight: bold; color: #0d7c9e; }
   #kpi-card .label { font-size: 0.9rem; color: #666; }
   canvas { margin-top: 1.5rem; }
+  #howto { background: #f3f7f9; padding: 0.75rem 1rem; border-radius: 6px; font-size: 0.9rem; color: #333; }
   #updated { color: #666; font-size: 0.85rem; }
 </style>
 </head>
 <body>
- <h1>What skills do job postings ask for?</h1>
-<p>A first look for ENSIM's curriculum committee: the share of 15 sampled job postings that mention one chosen skill. This is a small sample, taken from the first rows of a file and not selected at random, so it shows a direction, not a final conclusion.</p>
+  <h1>What skills do job postings ask for?</h1>
+  <p>A first look for ENSIM's curriculum committee: the share of 15 sampled job postings that mention one chosen skill. This is a small sample, taken from the first rows of a file and not selected at random, so it shows a direction, not a final conclusion.</p>
   <div id="kpi-card">Loading...</div>
-  <canvas id="skillsChart" height="320"></canvas>
+  <canvas id="skillsChart" height="420"></canvas>
+  <p id="howto"></p>
   <p id="updated"></p>
 
 <script>
-// On va chercher le fichier kpi.json (dans le dossier data, à côté de la page)
+// Texte du graphique plus grand, pour qu'il soit lisible
+Chart.defaults.font.size = 14;
+
 fetch('data/kpi.json')
   .then(r => r.json())
   .then(data => {
-    // Si aucun KPI n'a été calculé, on le dit clairement
     if (!data.n_postings_analyzed) {
       document.getElementById('kpi-card').innerHTML = '<p>No KPI computed yet -- run extract_skills.py then compute_kpi.py.</p>';
       return;
     }
+    const n = data.n_postings_analyzed;  // nombre total d'offres analysées
 
-    // La carte : le grand chiffre (en %), le libellé, et la moyenne de compétences
     document.getElementById('kpi-card').innerHTML = `
       <div class="value">${(data.kpi_value * 100).toFixed(0)}%</div>
-      <div class="label">${data.kpi_label} (${data.n_matching} of ${data.n_postings_analyzed} postings)</div>
+      <div class="label">${data.kpi_label} (${data.n_matching} of ${n} postings)</div>
       <div class="label">Average ${data.avg_skills_per_posting} distinct skills extracted per posting</div>
     `;
 
-    // Le graphique : barres horizontales des compétences les plus citées
     const top = data.top_skills || [];
     new Chart(document.getElementById('skillsChart'), {
       type: 'bar',
@@ -52,16 +53,28 @@ fetch('data/kpi.json')
         indexAxis: 'y',
         plugins: {
           legend: { display: false },
-          title: { display: true, text: 'Most-mentioned skills across analyzed postings' },
+          title: { display: true, text: 'Top 10 skills, by number of postings that mention them' },
+        },
+        scales: {
+          x: {
+            min: 0,
+            max: n,                       // l'échelle va jusqu'au total d'offres
+            ticks: { stepSize: 1 },
+            title: { display: true, text: `Number of postings (out of ${n})` },
+          },
         },
       },
     });
 
-    // La date de calcul, pour savoir si les données sont récentes
+    // Une phrase pour expliquer comment lire le graphique
+    document.getElementById('howto').textContent =
+      `How to read this chart: each bar is the number of postings, out of ${n}, that mention the skill. ` +
+      `Skills with the same count appear in no particular order, and only the top 10 are shown, ` +
+      `so the skill measured by the KPI above may not appear here.`;
+
     document.getElementById('updated').textContent = `Data last computed ${data.generated_at || '(see script output)'}`;
   })
   .catch(err => {
-    // Si le fichier est introuvable, on affiche l'erreur au lieu d'une page vide
     document.getElementById('kpi-card').innerHTML = '<p>Could not load KPI (' + err + ').</p>';
   });
 </script>
