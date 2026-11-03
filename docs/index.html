@@ -39,10 +39,12 @@ fetch('data/kpi.json')
     }
     const n = data.n_postings_analyzed;  // nombre total d'offres analysées
 
+    // La carte : KPI principal, moyenne de compétences, et (si présent) le deuxième KPI
     document.getElementById('kpi-card').innerHTML = `
       <div class="value">${(data.kpi_value * 100).toFixed(0)}%</div>
       <div class="label">${data.kpi_label} (${data.n_matching} of ${n} postings)</div>
       <div class="label">Average ${data.avg_skills_per_posting} distinct skills extracted per posting</div>
+      ${data.second_kpi ? `<div class="label"><b>Second KPI:</b> ${(data.second_kpi.kpi_value * 100).toFixed(0)}% ${data.second_kpi.kpi_label.replace(/^% of /, 'of ')} (${data.second_kpi.n_matching} of ${n} postings)</div>` : ''}
     `;
 
     const top = data.top_skills || [];
