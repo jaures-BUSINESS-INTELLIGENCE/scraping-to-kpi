@@ -230,3 +230,36 @@ compte de 2 (par exemple Diffusion architectures) pourrait désigner une annonce
 précise. Avec plus d'offres, ou en n'affichant que les compétences présentes dans
 plusieurs offres, ce risque serait plus faible.
 -->
+## Stage 6 – Visualization
+
+### Reflection 8: Who is this dashboard really for?
+
+As first built, the dashboard was for me: the title "Scraping to
+KPI lab" and the sentence about LLM extraction and `compute_kpi.py` describe the
+method, not the result. A curriculum committee would not know what the number means,
+and nothing on the page warned that it rests on only 15 postings, taken from the
+first rows of a file and not chosen at random.
+
+So the framing did not match the audience I chose in Stage 4. I changed the title to
+a question the committee cares about ("What skills do job postings ask for?") and I
+replaced the one-line description with this sentence: it says who the page is for,
+what the number measures, and that it is a small, non-random sample showing a
+direction, not a final conclusion.
+
+<!--
+FR :
+Réflexion 8 : à qui s'adresse vraiment ce tableau de bord ?
+
+Tel que je l'avais construit, le tableau de bord s'adressait à moi  : le titre « Scraping to KPI lab » et la phrase sur l'extraction par LLM
+et compute_kpi.py décrivent la méthode, pas le résultat. Un comité pédagogique ne
+saurait pas ce que le chiffre veut dire, et rien sur la page ne prévenait qu'il
+repose sur seulement 15 offres, prises dans les premières lignes d'un fichier et non
+choisies au hasard.
+
+Le cadrage ne correspondait donc pas au public que j'avais choisi à l'étape 4. J'ai
+changé le titre en une question qui intéresse le comité (« Quelles compétences les
+offres d'emploi demandent-elles ? ») et j'ai remplacé la description d'une ligne par
+cette phrase : elle dit à qui s'adresse la page, ce que mesure le chiffre, et qu'il
+s'agit d'un petit échantillon non aléatoire qui montre une tendance, pas une
+conclusion définitive.
+-->
