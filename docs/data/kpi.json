@@ -1,0 +1,50 @@
+{
+  "generated_at": "2026-10-28T22:02:54Z",
+  "kpi_label": "% of postings mentioning 'docker'",
+  "kpi_value": 0.133,
+  "n_postings_analyzed": 15,
+  "n_matching": 2,
+  "top_skills": [
+    {
+      "skill": "Python",
+      "count": 9
+    },
+    {
+      "skill": "PyTorch",
+      "count": 3
+    },
+    {
+      "skill": "PowerShell",
+      "count": 3
+    },
+    {
+      "skill": "Computer Vision",
+      "count": 2
+    },
+    {
+      "skill": "Generative AI",
+      "count": 2
+    },
+    {
+      "skill": "Deep learning-based perception models",
+      "count": 2
+    },
+    {
+      "skill": "Segmentation",
+      "count": 2
+    },
+    {
+      "skill": "Detection",
+      "count": 2
+    },
+    {
+      "skill": "Refinement",
+      "count": 2
+    },
+    {
+      "skill": "Diffusion architectures",
+      "count": 2
+    }
+  ],
+  "avg_skills_per_posting": 12.53
+}
