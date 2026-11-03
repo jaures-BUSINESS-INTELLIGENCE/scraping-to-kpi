@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-03T08:22:30Z",
+  "generated_at": "2026-11-03T08:40:12Z",
   "kpi_label": "% of postings mentioning 'docker'",
   "target_skill": "docker",
   "kpi_value": 0.133,
@@ -47,5 +47,10 @@
       "count": 2
     }
   ],
-  "avg_skills_per_posting": 12.53
+  "avg_skills_per_posting": 12.53,
+  "second_kpi": {
+    "kpi_label": "% of postings mentioning any cloud provider/service",
+    "kpi_value": 0.133,
+    "n_matching": 2
+  }
 }
